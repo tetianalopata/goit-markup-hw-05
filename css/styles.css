@@ -13,6 +13,8 @@
     --light: #F4F4FD;
 
     --vertical-card-set-gap: 24px;
+
+    --main-transition-dur-and-func: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -71,7 +73,7 @@ img {
     text-decoration: none;
     
     color: inherit;
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color var(--main-transition-dur-and-func);
 }
 
 .link:hover,
@@ -229,11 +231,66 @@ header {
 
     color: var(--primary-white);
     background-color: var(--accent-color);
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color var(--main-transition-dur-and-func);
 }
 
 .hero-button:hover{
     background-color: var(--pressed-state);
+}
+
+/* backdrop and modal */
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--backdrop);
+    transition: opacity var(--main-transition-dur-and-func);
+}
+
+.is-hidden {
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+
+    transition: opacity var(--main-transition-dur-and-func),
+    visibility var(--main-transition-dur-and-func);
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    min-width: 408px;
+    min-height: 576px;
+    padding: 24px 24px;
+
+    background-color: var(--modal-background);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+
+    background: var(--subtle);
 }
 
 /* advantages */
@@ -398,64 +455,6 @@ header {
     fill: currentColor;
 }
 
-/* backdrop and modal */
-
-.backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    background-color: var(--backdrop);
-    transform: scale(1);
-    transition:  transform 0.15s cubic-bezier(0.465, 0.183, 0.153, 0.946),
-    opacity 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
-}
-
-.is-hidden {
-    visibility: hidden;
-    pointer-events: none;
-    opacity: 0;
-
-    transform: scale(0.7);
-    transition: transform 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946),
-    opacity 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946);
-}
-
-.modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    min-width: 408px;
-    min-height: 576px;
-    padding: 24px 24px;
-
-    background-color: var(--modal-background);
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
-}
-
-.modal-close {
-    position: absolute;
-    top: 24px;
-    right: 24px;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
-
-    background: var(--subtle);
-}
-
 /* projects */
 
 .portfolio-section {
@@ -484,7 +483,7 @@ padding: 96px 0px 120px 0px;
 
     color: var(--accent-color);
     background-color: var(--light);
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color var(--main-transition-dur-and-func), background-color var(--main-transition-dur-and-func), box-shadow var(--main-transition-dur-and-func);
 }
 
 .filter-option:hover,
@@ -529,7 +528,7 @@ padding: 96px 0px 120px 0px;
 }
 
 .projects .link {
-    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: box-shadow var(--main-transition-dur-and-func);
 }
 
 .projects .link:focus,
@@ -555,7 +554,7 @@ padding: 96px 0px 120px 0px;
     height: 100%;
 
     background-color: var(--accent-color);
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--main-transition-dur-and-func);
 }
 
 .overlay-description {
@@ -615,7 +614,7 @@ padding: 96px 0px 120px 0px;
     color: var(--primary-white);
     border-radius: 50%;
     background: var(--transparent-white);
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color var(--main-transition-dur-and-func);
 }
 
 .join-networks .item:not(:last-child) {
