@@ -1,4 +1,5 @@
 :root {
+    --standard-black: #000000;
     --primary-dark: #2E2F42;
     --secondary-text-color: #434455;
     --accent-color: #4D5AE5;;
@@ -11,6 +12,7 @@
     --icon-main: #8E8F99;
     --pressed-state: #404BBF;
     --light: #F4F4FD;
+    --success: #31D0AA;
 
     --vertical-card-set-gap: 24px;
 
@@ -79,29 +81,6 @@ img {
 .link:hover,
 .link:focus {
     color: var(--pressed-state);
-}
-
-.current {
-    color: var(--pressed-state)
-}
-
-.current::after{
-    display: block;
-    content: "";
-
-    margin-top: 24px;
-
-    height: 4px;
-    border-radius: 2px;
-    background-color: var(--pressed-state);
-}
-
-.section-heading {
-    font-size: 36px;
-    line-height: calc(40 / 36);
-    text-align: center;
-    margin-bottom: 72px;
-    text-transform: capitalize;
 }
 
 /* header */
@@ -175,12 +154,41 @@ header {
 
 .nav-item .link {
     display: block;
+    position: relative;
+
     padding-top: 24px;
+    padding-bottom: 24px;
 }
 
 .nav-item:not(:last-child),
 .header-contact:not(:last-child) {
     margin-right: 40px;
+}
+
+.current {
+    color: var(--pressed-state)
+}
+
+.current::after {
+    display: block;
+    position: absolute;
+    content: "";
+
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--pressed-state);
+}
+
+.section-heading {
+    font-size: 36px;
+    line-height: calc(40 / 36);
+    text-align: center;
+    margin-bottom: 72px;
+    text-transform: capitalize;
 }
 
 .header-contact .link {
@@ -234,7 +242,9 @@ header {
     transition: background-color var(--main-transition-dur-and-func);
 }
 
-.hero-button:hover{
+.hero-button:hover,
+.hero-button:focus
+{
     background-color: var(--pressed-state);
 }
 
@@ -267,7 +277,8 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
 
-    min-width: 408px;
+    max-width: 408px;
+    width: 100%;
     min-height: 576px;
     padding: 24px 24px;
 
@@ -281,7 +292,7 @@ header {
     top: 24px;
     right: 24px;
 
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     width: 24px;
@@ -290,7 +301,22 @@ header {
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
 
-    background: var(--subtle);
+    color: var(--standard-black);
+    background-color: var(--subtle);
+    transition: background-color var(--main-transition-dur-and-func),
+    border-color var(--main-transition-dur-and-func),
+    color var(--main-transition-dur-and-func);
+}
+
+.modal .icon {
+    fill: currentColor;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: var(--primary-white);
+    background-color: var(--pressed-state);
+    border-color: var(--pressed-state);
 }
 
 /* advantages */
@@ -400,9 +426,10 @@ header {
     align-items: center;
     justify-content: center;
 
-    color: var(--primary-white);
+    color: var(--light);
     border-radius: 50%;
     background-color: var(--accent-color);
+    transition: background-color var(--main-transition-dur-and-func);
 }
 
 .social-networks .item:not(:last-child) {
@@ -415,7 +442,7 @@ header {
 
 .social-networks .link:hover,
 .social-networks .link:focus {
-  color: var(--primary-white);
+  color: var(--light);
   background-color: var(--pressed-state);
 }
 
@@ -436,6 +463,8 @@ header {
     border: 1px solid var(--icon-main);
     border-radius: 4px;
     color: var(--icon-main);
+    transition: border-color var(--main-transition-dur-and-func),
+    color var(--main-transition-dur-and-func);
 }
 
 .clients .link:hover,
@@ -548,24 +577,24 @@ padding: 96px 0px 120px 0px;
     position: absolute;
     top: 0;
     left: 0;
-    transform: translatey(200%);
+    transform: translatey(101%);
 
     width: 100%;
     height: 100%;
+    padding: 40px 32px;
 
     background-color: var(--accent-color);
     transition: var(--main-transition-dur-and-func);
 }
 
 .overlay-description {
-    padding: 40px 32px;
     font-size: 16px;
     line-height: calc(24 / 16);
     color: var(--light);
 }
 
 .projects .link:hover .overlay,
-.projects .link:hover .overlay  {
+.projects .link:focus .overlay  {
     transform: translatey(0);
 }
 
@@ -597,7 +626,7 @@ padding: 96px 0px 120px 0px;
     line-height: calc(24 / 16);
     margin-bottom: 20px;
 
-    color: var(--primary-white);
+    color: var(--light);
 }
 
 .join-networks .list {
@@ -611,7 +640,7 @@ padding: 96px 0px 120px 0px;
     align-items: center;
     justify-content: center;
 
-    color: var(--primary-white);
+    color: var(--light);
     border-radius: 50%;
     background: var(--transparent-white);
     transition: background-color var(--main-transition-dur-and-func);
@@ -627,6 +656,6 @@ padding: 96px 0px 120px 0px;
 
 .join-networks .link:hover,
 .join-networks .link:focus {
-  background-color: var(--accent-color);
+  background-color: var(--success);
 }
 
